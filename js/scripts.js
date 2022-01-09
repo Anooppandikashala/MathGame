@@ -13,20 +13,99 @@ class Question {
 };
 
 const questionList = new Array();
+const ghostDivPostionList = new Array();
+
+function fillGhostDivPostionList() {
+    let game_loader_row_one = document.querySelector(".game_loader_row_one").getBoundingClientRect();
+    ghostDivPostionList.push(game_loader_row_one);
+
+    let game_loader_row_two = document.querySelector(".game_loader_row_two").getBoundingClientRect();
+    ghostDivPostionList.push(game_loader_row_two);
+
+    let game_loader_row_three = document.querySelector(".game_loader_row_three").getBoundingClientRect();
+    ghostDivPostionList.push(game_loader_row_three);
+
+    let game_loader_row_four = document.querySelector(".game_loader_row_four").getBoundingClientRect();
+    ghostDivPostionList.push(game_loader_row_four);
+
+    let game_loader_row_five = document.querySelector(".game_loader_row_five").getBoundingClientRect();
+    ghostDivPostionList.push(game_loader_row_five);
+}
+
+function isAnswerContain(q) {
+    for (let tq of questionList) {
+        if (tq.answer == q.answer) {
+            return true
+        }
+    }
+    return false;
+}
+
+function isPlayerInGhostDiv(playerDiv, ghostDiv) {
+    return (ghostDiv.bottom >= (playerDiv.bottom - 20) && ghostDiv.top <= (playerDiv.bottom - 20));
+}
+
+function getGhostDivIndexForPlayer(gamePlayer) {
+    let index = 0;
+    console.log("gamePlayer bottom :" + gamePlayer.bottom + " ; top :", gamePlayer.top)
+    for (let row of ghostDivPostionList) {
+        console.log("bottom :" + row.bottom + " ; top :", row.top)
+    }
+    for (let row of ghostDivPostionList) {
+        if (isPlayerInGhostDiv(gamePlayer, row)) {
+            return index;
+        }
+        index++;
+    }
+    return -1;
+}
+
+function isCorrectAnswer() {
+    console.log("in isCorrectAnswer");
+    let gamePlayer = document.querySelector("#gamePlayer").getBoundingClientRect();
+    let index = getGhostDivIndexForPlayer(gamePlayer);
+    console.log("Index : " + index);
+    let answer = Math.floor(Number(document.querySelector("#gameAnswer").innerHTML));
+    console.log("answer : " + answer);
+    if (index == -1) {
+        return false;
+    }
+    if (questionList[index].answer == answer) {
+        return true;
+    }
+    return false;
+}
 
 function generateQuestion() {
-    let num1 = Math.floor(Math.random() * 15) + 1;
-    let num2 = Math.floor(Math.random() * 10) + 1;
-    let q = new Question(num1, num2);
-    questionList.push(q);
+    while (true) {
+        let num1 = Math.floor(Math.random() * 15) + 1;
+        let num2 = Math.floor(Math.random() * 10) + 1;
+        let q = new Question(num1, num2);
+
+        if (isAnswerContain(q)) {
+            continue;
+        } else {
+            questionList.push(q);
+            break;
+        }
+    }
 }
 
 function laserBeamAttack() {
     let laserBeam = document.querySelector("#laserBeam");
     laserBeam.style.display = "block";
+
     setTimeout(function() {
         laserBeam.style.display = "none";
     }, 300);
+
+    if (isCorrectAnswer()) {
+        alert("Correct Answer");
+    } else {
+        alert("Wrong Answer");
+    }
+
+
 }
 
 function setGameLevel(value) {
@@ -40,14 +119,14 @@ function setGameRemainngTime(timeValue) {
 }
 
 function ghostMove(boundaryWidth, ghost, interval) {
-    console.log("in ghostMove");
+    // console.log("in ghostMove");
     let id = null;
     let pos = 0;
     clearInterval(id);
     id = setInterval(frame, interval);
 
     function frame() {
-        console.log("in ghostMove frame");
+        // console.log("in ghostMove frame");
         if (pos >= boundaryWidth) {
             clearInterval(id);
         } else {
@@ -58,7 +137,7 @@ function ghostMove(boundaryWidth, ghost, interval) {
 }
 
 function playerMove(boundaryHeight, direction) {
-    console.log("in playerMove");
+    // console.log("in playerMove");
     if (playerPosition >= boundaryHeight || playerPosition <= 10) {
         if (playerPosition >= boundaryHeight) {
             playerPosition -= 5;
@@ -77,7 +156,7 @@ function playerMove(boundaryHeight, direction) {
 }
 
 function setGameTime() {
-    console.log("in gameTime");
+    // console.log("in gameTime");
     let id = null;
     let pos = 60;
     setGameRemainngTime(pos + " Sec");
@@ -85,7 +164,7 @@ function setGameTime() {
     id = setInterval(frame, 1000);
 
     function frame() {
-        console.log("in playerMove frame");
+        // console.log("in playerMove frame");
         if (pos <= 0) {
             clearInterval(id);
         } else {
@@ -137,14 +216,14 @@ function playGame(boundaryWidth, boundaryHeight) {
 }
 
 function playerMoveUp() {
-    console.log("in playerMoveUp");
+    // console.log("in playerMoveUp");
     let game_loader_row_five = document.querySelector(".game_loader_row_five");
     const boundaryHeight = game_loader_row_five.getBoundingClientRect().y;
     playerMove(boundaryHeight, "up");
 }
 
 function playerMoveDown() {
-    console.log("in playerMoveDown");
+    // console.log("in playerMoveDown");
     let game_loader_row_five = document.querySelector(".game_loader_row_five");
     const boundaryHeight = game_loader_row_five.getBoundingClientRect().y;
     playerMove(boundaryHeight, "down");
@@ -192,8 +271,10 @@ function startGame() {
     const boundaryWidth = gamePlayer.getBoundingClientRect().x - gamePlayer.getBoundingClientRect().width;
     let game_loader_row_five = document.querySelector(".game_loader_row_five");
     const boundaryHeight = game_loader_row_five.getBoundingClientRect().y;
-    console.log(boundaryHeight);
+    // console.log(boundaryHeight);
     document.addEventListener('keydown', onKeyPressed);
+
+    fillGhostDivPostionList();
     playGame(boundaryWidth, boundaryHeight);
 }
 
