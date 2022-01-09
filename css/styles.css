@@ -94,11 +94,25 @@
     color: white;
     width: 100%;
     text-align: center;
+    position: relative;
+}
+
+.game_ghost_layer,
+.game_player_layer {
+    width: 100%;
+    height: 91vh;
+    position: absolute;
+}
+
+.game_player_layer {
+    z-index: 10;
+    text-align: right;
 }
 
 .game_loader_row_one {
     margin: 0px auto;
     width: 100%;
+    text-align: left;
     display: inline-block;
     background-color: rgb(218, 113, 52, 0.459);
     height: 18vh;
@@ -136,9 +150,13 @@
     height: 18vh;
 }
 
+
+/* game_ghost */
+
 .game_ghost {
     height: 18vh;
-    align-items: center;
+    width: fit-content;
+    /* margin-left: 50px; */
 }
 
 .game_ghost_image img {

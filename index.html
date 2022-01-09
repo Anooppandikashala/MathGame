@@ -9,7 +9,6 @@
     <meta name="author" content="Aneesa">
 
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/scripts.js"></script>
 
 </head>
 
@@ -32,80 +31,84 @@
                 <input type="text" placeholder="Enter player name">
             </div>
             <div class="start_game">
-                <button onclick="startGame()">START</button>
+                <button id="startGame">START</button>
             </div>
             <div class="view_rules">
-                <button>VIEW RULES</button>
+                <button id="viewRules">VIEW RULES</button>
             </div>
             <div class="high_scores">
-                <button>HIGH SCORES</button>
+                <button id="highScoes">HIGH SCORES</button>
             </div>
 
         </div>
         <div id="gameLoader" class="game_loader">
-            <div class="game_loader_row_one">
-                <div class="game_ghost">
-                    <div class="game_ghost_image">
-                        <img src="./assets/images/characters/ghost.png" alt="ghost">
+            <div class="game_player_layer">
+                <img id="gamePlayer" class="game_player" src="./assets/images/characters/player.png" alt="player">
+            </div>
+            <div class="game_ghost_layer">
+                <div class="game_loader_row_one">
+                    <div id="gameGhost1" class="game_ghost">
+                        <div class="game_ghost_image">
+                            <img src="./assets/images/characters/ghost.png" alt="ghost">
+                        </div>
+                        <div class="game_ghost_question">
+                            <h4 id="game_question_one">100 * 23 = ?</h4>
+                        </div>
                     </div>
-                    <div class="game_ghost_question">
-                        <h4 id="game_question_one">100 * 23 = ?</h4>
+                </div>
+                <div class="game_loader_row_two">
+                    <div id="gameGhost2" class="game_ghost">
+                        <div class="game_ghost_image">
+                            <img src="./assets/images/characters/ghost.png" alt="ghost">
+                        </div>
+                        <div class="game_ghost_question">
+                            <h4 id="game_question_two">100 * 23 = ?</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="game_loader_row_three">
+                    <div id="gameGhost3" class="game_ghost">
+                        <div class="game_ghost_image">
+                            <img src="./assets/images/characters/ghost.png" alt="ghost">
+                        </div>
+                        <div class="game_ghost_question">
+                            <h4 id="game_question_three">100 * 23 = ?</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="game_loader_row_four">
+                    <div id="gameGhost4" class="game_ghost">
+                        <div class="game_ghost_image">
+                            <img src="./assets/images/characters/ghost.png" alt="ghost">
+                        </div>
+                        <div class="game_ghost_question">
+                            <h4 id="game_question_four">100 * 23 = ?</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="game_loader_row_five">
+                    <div id="gameGhost5" class="game_ghost">
+                        <div class="game_ghost_image">
+                            <img src="./assets/images/characters/ghost.png" alt="ghost">
+                        </div>
+                        <div class="game_ghost_question">
+                            <h4 id="game_question_five">100 * 23 = ?</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="game_loader_row_two">
-                <div class="game_ghost">
-                    <div class="game_ghost_image">
-                        <img src="./assets/images/characters/ghost.png" alt="ghost">
-                    </div>
-                    <div class="game_ghost_question">
-                        <h4 id="game_question_two">100 * 23 = ?</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="game_loader_row_three">
-                <div class="game_ghost">
-                    <div class="game_ghost_image">
-                        <img src="./assets/images/characters/ghost.png" alt="ghost">
-                    </div>
-                    <div class="game_ghost_question">
-                        <h4 id="game_question_three">100 * 23 = ?</h4>
-                    </div>
-                </div>
-                <img class="game_player" src="./assets/images/characters/player.png" alt="player">
-            </div>
-            <div class="game_loader_row_four">
-                <div class="game_ghost">
-                    <div class="game_ghost_image">
-                        <img src="./assets/images/characters/ghost.png" alt="ghost">
-                    </div>
-                    <div class="game_ghost_question">
-                        <h4 id="game_question_four">100 * 23 = ?</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="game_loader_row_five">
-                <div class="game_ghost">
-                    <div class="game_ghost_image">
-                        <img src="./assets/images/characters/ghost.png" alt="ghost">
-                    </div>
-                    <div class="game_ghost_question">
-                        <h4 id="game_question_five">100 * 23 = ?</h4>
-                    </div>
-                </div>
-            </div>
-
         </div>
         <div id="gameFooter" class="game_footer">
             <div class="game_level">
-                <h1>Level :</h1>
+                <h1>Level : <span id="gameLevel"></span></h1>
             </div>
             <div class="game_rem_time">
-                <h1>Time Remaining :</h1>
+                <h1>Time Remaining : <span id="remTime"></span></h1>
             </div>
         </div>
 
     </div>
 </body>
+<script src="js/scripts.js"></script>
 
 </html>
