@@ -1,3 +1,34 @@
+let playerPosition = Math.floor(screen.height / 2);
+
+class Question {
+    constructor(number1, number2) {
+        this.number1 = number1;
+        this.number2 = number2;
+        this.answer = number1 * number2;
+    }
+
+    getQuestion() {
+        return String(this.number1) + " X " + String(this.number2) + " = ?"
+    }
+};
+
+const questionList = new Array();
+
+function generateQuestion() {
+    let num1 = Math.floor(Math.random() * 15) + 1;
+    let num2 = Math.floor(Math.random() * 10) + 1;
+    let q = new Question(num1, num2);
+    questionList.push(q);
+}
+
+function laserBeamAttack() {
+    let laserBeam = document.querySelector("#laserBeam");
+    laserBeam.style.display = "block";
+    setTimeout(function() {
+        laserBeam.style.display = "none";
+    }, 300);
+}
+
 function setGameLevel(value) {
     let gameLevel = document.querySelector("#gameLevel");
     gameLevel.innerHTML = value;
@@ -21,33 +52,31 @@ function ghostMove(boundaryWidth, ghost, interval) {
             clearInterval(id);
         } else {
             pos++;
-            // ghost.style.top = pos + "px";
             ghost.style.marginLeft = pos + "px";
-            // ghost.style.margin-left = pos + "px";
         }
     }
 }
 
-function playerMove(boundaryHeight, player, direction, interval) {
+function playerMove(boundaryHeight, direction) {
     console.log("in playerMove");
-    let id = null;
-    let pos = 0;
-    clearInterval(id);
-    id = setInterval(frame, interval);
-
-    function frame() {
-        console.log("in playerMove frame");
-        if (pos >= boundaryHeight) {
-            clearInterval(id);
+    if (playerPosition >= boundaryHeight || playerPosition <= 10) {
+        if (playerPosition >= boundaryHeight) {
+            playerPosition -= 5;
         } else {
-            pos++;
-            // ghost.style.marginLeft = pos + "px"
-            player.style.marginTop = pos + "px";
+            playerPosition += 5;
         }
+        return;
     }
+    if (direction == "up") {
+        playerPosition += 5;
+    } else {
+        playerPosition -= 5;
+    }
+    let player = document.querySelector("#gamePlayer");
+    player.style.marginTop = playerPosition + "px";
 }
 
-function gameTime() {
+function setGameTime() {
     console.log("in gameTime");
     let id = null;
     let pos = 60;
@@ -67,14 +96,30 @@ function gameTime() {
 }
 
 function getGhostVelocity() {
-    let ret = Math.floor(Math.random() * 10) + 1;
+    let ret = Math.floor(Math.random() * 25) + 10;
     return ret;
+}
+
+function setQuestionsAndAnswer() {
+    for (let i = 0; i < 5; i++) {
+        generateQuestion();
+    }
+    document.querySelector("#game_question_one").innerHTML = questionList[0].getQuestion();
+    document.querySelector("#game_question_two").innerHTML = questionList[1].getQuestion();
+    document.querySelector("#game_question_three").innerHTML = questionList[2].getQuestion();
+    document.querySelector("#game_question_four").innerHTML = questionList[3].getQuestion();
+    document.querySelector("#game_question_five").innerHTML = questionList[4].getQuestion();
+
+    let index = Math.floor(Math.random() * 5);
+    document.querySelector("#gameAnswer").innerHTML = questionList[index].answer;
+
 }
 
 
 function playGame(boundaryWidth, boundaryHeight) {
+    setQuestionsAndAnswer();
     setGameLevel(1);
-    gameTime();
+    setGameTime();
     let ghost1 = document.querySelector("#gameGhost1");
     let ghost2 = document.querySelector("#gameGhost2");
     let ghost3 = document.querySelector("#gameGhost3");
@@ -87,8 +132,45 @@ function playGame(boundaryWidth, boundaryHeight) {
     ghostMove(boundaryWidth, ghost4, getGhostVelocity());
     ghostMove(boundaryWidth, ghost5, getGhostVelocity());
 
-    let player = document.querySelector("#gamePlayer");
-    playerMove(boundaryHeight, player, "down", 10);
+    playerMove(boundaryHeight, "up");
+
+}
+
+function playerMoveUp() {
+    console.log("in playerMoveUp");
+    let game_loader_row_five = document.querySelector(".game_loader_row_five");
+    const boundaryHeight = game_loader_row_five.getBoundingClientRect().y;
+    playerMove(boundaryHeight, "up");
+}
+
+function playerMoveDown() {
+    console.log("in playerMoveDown");
+    let game_loader_row_five = document.querySelector(".game_loader_row_five");
+    const boundaryHeight = game_loader_row_five.getBoundingClientRect().y;
+    playerMove(boundaryHeight, "down");
+}
+
+function onKeyPressed(e) {
+    if (!e) var e = window.event;
+    (e.keyCode) ? key = e.keyCode: key = e.which;
+    try {
+        switch (key) {
+            case 32:
+                laserBeamAttack();
+                break; //left
+            case 37:
+                break; //left
+            case 38:
+                playerMoveDown();
+                break; //down
+            case 39:
+                break; //right
+            case 40:
+                playerMoveUp();
+                break; //up
+        }
+    } catch (Exception) {}
+
 }
 
 function startGame() {
@@ -97,7 +179,9 @@ function startGame() {
     let gameBody = document.querySelector("#gameBody");
     let gameLoader = document.querySelector("#gameLoader");
     let gameFooter = document.querySelector("#gameFooter");
+    let laserBeam = document.querySelector("#laserBeam");
 
+    laserBeam.style.display = "none";
     gameHeader.style.display = "none";
     gameBody.style.display = "none";
     gameLoader.style.display = "block";
@@ -109,6 +193,7 @@ function startGame() {
     let game_loader_row_five = document.querySelector(".game_loader_row_five");
     const boundaryHeight = game_loader_row_five.getBoundingClientRect().y;
     console.log(boundaryHeight);
+    document.addEventListener('keydown', onKeyPressed);
     playGame(boundaryWidth, boundaryHeight);
 }
 
