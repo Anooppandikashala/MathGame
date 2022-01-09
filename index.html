@@ -1,0 +1,111 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>The Spooky Math Game</title>
+    <meta name="description" content="The Spooky Math Game">
+    <meta name="author" content="Aneesa">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+
+</head>
+
+<body>
+    <div class="game_container">
+        <div id="gameHeader" class="game_header">
+            <div class="game_title">
+                <h1>
+                    Game Name Goes Here
+                </h1>
+            </div>
+            <div class="game_volume">
+                <img src="./assets/images/icons/volume.png" alt="volume">
+            </div>
+
+        </div>
+        <div id="gameBody" class="game_body">
+
+            <div class="input_player_name">
+                <input type="text" placeholder="Enter player name">
+            </div>
+            <div class="start_game">
+                <button onclick="startGame()">START</button>
+            </div>
+            <div class="view_rules">
+                <button>VIEW RULES</button>
+            </div>
+            <div class="high_scores">
+                <button>HIGH SCORES</button>
+            </div>
+
+        </div>
+        <div id="gameLoader" class="game_loader">
+            <div class="game_loader_row_one">
+                <div class="game_ghost">
+                    <div class="game_ghost_image">
+                        <img src="./assets/images/characters/ghost.png" alt="ghost">
+                    </div>
+                    <div class="game_ghost_question">
+                        <h4 id="game_question_one">100 * 23 = ?</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="game_loader_row_two">
+                <div class="game_ghost">
+                    <div class="game_ghost_image">
+                        <img src="./assets/images/characters/ghost.png" alt="ghost">
+                    </div>
+                    <div class="game_ghost_question">
+                        <h4 id="game_question_two">100 * 23 = ?</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="game_loader_row_three">
+                <div class="game_ghost">
+                    <div class="game_ghost_image">
+                        <img src="./assets/images/characters/ghost.png" alt="ghost">
+                    </div>
+                    <div class="game_ghost_question">
+                        <h4 id="game_question_three">100 * 23 = ?</h4>
+                    </div>
+                </div>
+                <img class="game_player" src="./assets/images/characters/player.png" alt="player">
+            </div>
+            <div class="game_loader_row_four">
+                <div class="game_ghost">
+                    <div class="game_ghost_image">
+                        <img src="./assets/images/characters/ghost.png" alt="ghost">
+                    </div>
+                    <div class="game_ghost_question">
+                        <h4 id="game_question_four">100 * 23 = ?</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="game_loader_row_five">
+                <div class="game_ghost">
+                    <div class="game_ghost_image">
+                        <img src="./assets/images/characters/ghost.png" alt="ghost">
+                    </div>
+                    <div class="game_ghost_question">
+                        <h4 id="game_question_five">100 * 23 = ?</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="gameFooter" class="game_footer">
+            <div class="game_level">
+                <h1>Level :</h1>
+            </div>
+            <div class="game_rem_time">
+                <h1>Time Remaining :</h1>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

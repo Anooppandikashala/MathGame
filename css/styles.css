@@ -1,0 +1,195 @@
+.game_container {
+    background-image: url("../assets/images/background/bg.jpg");
+    background-size: cover;
+    height: fit-content;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.game_header {
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game_title {
+    flex: 9;
+    text-align: center;
+}
+
+.game_volume {
+    flex: 1;
+}
+
+.game_title h1 {
+    font-size: 55px;
+    color: white;
+}
+
+.game_volume img {
+    height: 60px;
+    width: 60px;
+}
+
+.game_body {
+    height: 67vh;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.input_player_name input {
+    text-align: center;
+    font-size: 35px;
+    height: 40px;
+    width: 500px;
+}
+
+.start_game button {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 25px;
+    padding: 10px;
+    height: fit-content;
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(175, 119, 16);
+    width: fit-content;
+}
+
+.view_rules button {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 25px;
+    padding: 10px;
+    height: fit-content;
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(175, 119, 16);
+    width: fit-content;
+}
+
+.high_scores button {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 25px;
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(175, 119, 16);
+    padding: 10px;
+    height: fit-content;
+    width: fit-content;
+}
+
+
+/* game loader  */
+
+.game_loader {
+    display: none;
+    height: 91vh;
+    margin-top: 0px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.game_loader_row_one {
+    margin: 0px auto;
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(218, 113, 52, 0.459);
+    height: 18vh;
+}
+
+.game_loader_row_two {
+    margin: 0px auto;
+    width: 100%;
+    display: inline-block;
+    background-color: rgba(143, 72, 31, 0.459);
+    height: 18vh;
+}
+
+.game_loader_row_three {
+    display: inline-block;
+    width: 100%;
+    display: inline-block;
+    background-color: rgba(98, 47, 17, 0.459);
+    height: 18vh;
+}
+
+.game_loader_row_four {
+    margin: 0px auto;
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(53, 24, 8, 0.459);
+    height: 18vh;
+}
+
+.game_loader_row_five {
+    margin: 0px auto;
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(36, 14, 3, 0.459);
+    height: 18vh;
+}
+
+.game_ghost {
+    height: 18vh;
+    align-items: center;
+}
+
+.game_ghost_image img {
+    margin-top: 5px;
+    display: inline-block;
+    text-align: center;
+    height: 13vh;
+}
+
+.game_ghost_question {
+    font-size: 30px;
+    margin-top: -50px;
+    text-align: center;
+    display: inline-block;
+    height: 6vh;
+}
+
+
+/* footer */
+
+.game_footer {
+    display: none;
+    flex-wrap: wrap;
+    background-color: rgb(0, 0, 0);
+    height: 8vh;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.game_level {
+    text-align: left;
+    flex: 50%;
+}
+
+.game_level h1 {
+    margin-left: 20px;
+}
+
+.game_rem_time {
+    text-align: right;
+    flex: 50%;
+}
+
+.game_rem_time h1 {
+    margin-right: 20px;
+}
+
+
+/* player */
+
+.game_player {
+    height: 13vh;
+}
