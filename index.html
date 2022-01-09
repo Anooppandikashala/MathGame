@@ -25,10 +25,25 @@
             </div>
 
         </div>
-        <div id="gameBody" class="game_body">
+        <div id="gameHighScoreBody" class="game_body">
+            <div class="overlay">
+                <div class="game_highscore_title">
+                    <h1>
+                        HIGH SCORES
+                    </h1>
+                </div>
+                <h1 class="highscore" id="highscore_1">1. </h1>
+                <h1 class="highscore" id="highscore_2">2. </h1>
+                <h1 class="highscore" id="highscore_3">3. </h1>
+                <h1 class="highscore" id="highscore_4">4. </h1>
+                <h1 class="highscore" id="highscore_5">5. </h1>
 
+                <button id="highScoreBackButton">Back</button>
+            </div>
+        </div>
+        <div id="gameBody" class="game_body">
             <div class="input_player_name">
-                <input type="text" placeholder="Enter player name">
+                <input id="userName" type="text" placeholder="Enter player name">
             </div>
             <div class="start_game">
                 <button id="startGame">START</button>
@@ -42,6 +57,12 @@
 
         </div>
         <div id="gameLoader" class="game_loader">
+            <div class="game_over_layer">
+                <div class="game_over">
+                    <button id="gameOver">Game Over!</button>
+                </div>
+                <button id="backButton">Back</button>
+            </div>
             <div class="game_player_layer">
                 <img id="gamePlayer" class="game_player" src="./assets/images/characters/player.png" alt="player">
                 <div class="game_answer">

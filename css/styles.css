@@ -8,7 +8,7 @@
 }
 
 .game_header {
-    height: 30vh;
+    height: 35vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -29,6 +29,14 @@
     color: white;
 }
 
+.game_highscore_title h1 {
+    font-size: 45px;
+    color: white;
+    margin-top: 0%;
+    text-align: center;
+    padding-top: 65px;
+}
+
 .game_volume img {
     height: 60px;
     width: 60px;
@@ -36,6 +44,14 @@
 
 .game_body {
     height: 67vh;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#gameHighScoreBody {
+    height: 98vh;
+    padding-top: 13%;
     display: block;
     width: 100%;
     text-align: center;
@@ -98,6 +114,7 @@
 }
 
 .game_ghost_layer,
+.game_over_layer,
 .game_player_layer {
     width: 100%;
     height: 91vh;
@@ -233,4 +250,63 @@
     height: 10px;
     background: rgba(240, 9, 9, 0.6);
     box-shadow: 0px 0px 15px 0px #ec1313;
+}
+
+
+/* game over */
+
+.game_over_layer {
+    z-index: 20;
+    text-align: center;
+    display: none;
+}
+
+.game_over button {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 15%;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    pointer-events: none;
+    height: fit-content;
+    color: white;
+    font-weight: bolder;
+    background-color: rgba(175, 119, 16, 0.808);
+    width: fit-content;
+}
+
+#backButton {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 25px;
+    padding: 10px;
+    height: fit-content;
+    color: white;
+    font-weight: bolder;
+    background-color: rgba(156, 13, 13, 0.808);
+    width: fit-content;
+}
+
+#highScoreBackButton {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 25px;
+    padding: 10px;
+    height: fit-content;
+    color: white;
+    font-weight: bolder;
+    background-color: rgba(156, 13, 13, 0.808);
+    width: fit-content;
+}
+
+.overlay {
+    padding: 20px;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.678);
+}
+
+.highscore {
+    color: azure;
 }
