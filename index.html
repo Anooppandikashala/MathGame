@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>The Spooky Math Game</title>
-    <meta name="description" content="The Spooky Math Game">
-    <meta name="author" content="Aneesa">
+    <title>The Ghost Hunter Math Game</title>
+    <meta name="description" content="The Ghost Hunter Math Game">
+    <meta name="author" content="anoop">
 
     <link rel="stylesheet" href="css/styles.css">
 
@@ -16,27 +16,27 @@
     <div class="game_container">
         <div id="gameHeader" class="game_header">
             <div class="game_title">
-                <h1>Ghost Hunter</h1>
+                <!-- <h1>The Ghost Hunter</h1> -->
+                <img class="game_title_img" src="./assets/images/typefaces/Group.png" alt="player">
             </div>
-            <div class="game_volume">
-                <img src="./assets/images/icons/volume.png" alt="volume">
-            </div>
-
         </div>
-        <div id="gameHighScoreBody" class="game_body">
+        <div id="gameHighScoreBody">
             <div class="overlay">
                 <div class="game_highscore_title">
                     <h1>
                         HIGH SCORES
                     </h1>
                 </div>
-                <h1 class="highscore" id="highscore_1">1. </h1>
-                <h1 class="highscore" id="highscore_2">2. </h1>
-                <h1 class="highscore" id="highscore_3">3. </h1>
-                <h1 class="highscore" id="highscore_4">4. </h1>
-                <h1 class="highscore" id="highscore_5">5. </h1>
-
-                <button id="highScoreBackButton">Back</button>
+                <div class="game_highscore_list">
+                    <h1 class="highscore" id="highscore_1">1. </h1>
+                    <h1 class="highscore" id="highscore_2">2. </h1>
+                    <h1 class="highscore" id="highscore_3">3. </h1>
+                    <h1 class="highscore" id="highscore_4">4. </h1>
+                    <h1 class="highscore" id="highscore_5">5. </h1>
+                </div>
+                <div>
+                    <button id="highScoreBackButton">Back</button>
+                </div>                
             </div>
         </div>
         <div id="gameBody" class="game_body">
